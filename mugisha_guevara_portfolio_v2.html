@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>MUGISHA RUSHINGA Guevara — Software Developer</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root {
+  --bg:#f8f7f4;
+  --surface:#ffffff;
+  --surface2:#f0eee8;
+  --border:#00000010;
+  --border2:#00000018;
+  --text:#1a1820;
+  --muted:#666;
+  --accent:#7c6fff;
+  --accent2:#00c896;
+  --font-head:'Syne',sans-serif;
+  --font-body:'DM Sans',sans-serif;
+  --shadow: 0 2px 20px rgba(0,0,0,0.08);
+  --nav-bg: rgba(248,247,244,0.9);
+}
+[data-theme="dark"] {
+  --bg:#0a0a0f;
+  --surface:#111118;
+  --surface2:#18181f;
+  --border:#ffffff14;
+  --border2:#ffffff22;
+  --text:#f0eee8;
+  --muted:#888;
+  --shadow: 0 2px 20px rgba(0,0,0,0.4);
+  --nav-bg: rgba(10,10,15,0.9);
+}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-size:15px;line-height:1.7;overflow-x:hidden;transition:background .3s,color .3s;}
+
+/* THEME TOGGLE */
+.theme-toggle{width:44px;height:44px;border-radius:50%;border:1px solid var(--border2);background:var(--surface);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:18px;transition:all .2s;box-shadow:var(--shadow);}
+.theme-toggle:hover{background:var(--accent);border-color:var(--accent);}
+.theme-toggle:hover .icon-sun,.theme-toggle:hover .icon-moon{color:#fff;}
+.icon-sun,.icon-moon{color:var(--muted);transition:color .2s;}
+[data-theme="light"] .icon-moon{display:none;}
+[data-theme="dark"] .icon-sun{display:none;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 5%;display:flex;align-items:center;justify-content:space-between;height:64px;background:var(--nav-bg);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);transition:background .3s,border-color .3s;}
+.nav-logo{font-family:var(--font-head);font-weight:800;font-size:18px;color:var(--text);text-decoration:none;letter-spacing:-0.5px;}
+.nav-logo span{color:var(--accent);}
+.nav-links{display:flex;gap:32px;list-style:none;align-items:center;}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:500;transition:color .2s;}
+.nav-links a:hover{color:var(--text);}
+.nav-cta{background:var(--accent);color:#fff;padding:8px 20px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;font-family:var(--font-head);transition:opacity .2s;}
+.nav-cta:hover{opacity:.85;}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;padding:100px 5% 60px;position:relative;overflow:hidden;}
+[data-theme="light"] .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 70% 50%, rgba(124,111,255,.07) 0%, transparent 70%),radial-gradient(ellipse 40% 40% at 20% 80%, rgba(0,200,150,.05) 0%, transparent 60%);}
+[data-theme="dark"] .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 70% 50%, rgba(124,111,255,.12) 0%, transparent 70%),radial-gradient(ellipse 40% 40% at 20% 80%, rgba(90,255,200,.06) 0%, transparent 60%);}
+.hero-content{position:relative;max-width:700px;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--surface2);border:1px solid var(--border2);border-radius:100px;padding:6px 16px;font-size:12px;color:var(--muted);margin-bottom:28px;font-family:var(--font-head);letter-spacing:.5px;}
+.hero-badge-dot{width:7px;height:7px;border-radius:50%;background:var(--accent2);animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.4;}}
+.hero h1{font-family:var(--font-head);font-size:clamp(40px,6vw,72px);font-weight:800;line-height:1.08;letter-spacing:-2px;margin-bottom:24px;}
+.hero h1 .line2{color:var(--accent);}
+.hero-desc{font-size:16px;color:var(--muted);max-width:540px;margin-bottom:40px;line-height:1.75;}
+.hero-actions{display:flex;gap:16px;flex-wrap:wrap;}
+.btn-primary{background:var(--accent);color:#fff;padding:13px 28px;border-radius:10px;font-family:var(--font-head);font-weight:600;font-size:14px;text-decoration:none;transition:opacity .2s;}
+.btn-primary:hover{opacity:.85;}
+.btn-secondary{background:transparent;color:var(--text);padding:13px 28px;border-radius:10px;font-family:var(--font-head);font-weight:600;font-size:14px;text-decoration:none;border:1px solid var(--border2);transition:border-color .2s;}
+.btn-secondary:hover{border-color:var(--accent);}
+.hero-socials{display:flex;gap:16px;margin-top:48px;align-items:center;}
+.hero-socials span{font-size:12px;color:var(--muted);font-family:var(--font-head);letter-spacing:.5px;}
+.social-link{width:38px;height:38px;border-radius:9px;border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;text-decoration:none;transition:border-color .2s,background .2s;}
+.social-link:hover{border-color:var(--accent);background:rgba(124,111,255,.1);}
+.social-link svg{width:16px;height:16px;fill:var(--muted);}
+.social-link:hover svg{fill:var(--accent);}
+
+/* SECTIONS */
+section{padding:80px 5%;}
+.section-label{font-family:var(--font-head);font-size:11px;letter-spacing:2px;color:var(--accent);text-transform:uppercase;margin-bottom:14px;}
+.section-title{font-family:var(--font-head);font-size:clamp(28px,4vw,44px);font-weight:800;letter-spacing:-1.5px;margin-bottom:16px;}
+.section-sub{color:var(--muted);max-width:520px;margin-bottom:56px;}
+.divider{height:1px;background:var(--border);margin:0 5%;}
+
+/* ABOUT — PASSPORT PHOTO */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+.about-avatar{width:100%;max-width:340px;aspect-ratio:3/4;border-radius:16px;overflow:hidden;border:3px solid var(--accent);box-shadow:0 8px 40px rgba(124,111,255,.18);position:relative;background:var(--surface2);}
+.about-avatar img{width:100%;height:100%;object-fit:cover;object-position:center 10%;transform:scale(1.18) translateY(-4%);}
+.about-text p{color:var(--muted);margin-bottom:20px;}
+.about-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px;}
+.tag{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:6px 14px;font-size:12px;color:var(--text);font-family:var(--font-head);letter-spacing:.3px;}
+
+/* PROJECTS */
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;}
+.project-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:32px;transition:border-color .25s,transform .25s,box-shadow .25s;}
+.project-card:hover{border-color:var(--accent);transform:translateY(-4px);box-shadow:0 12px 40px rgba(124,111,255,.12);}
+.project-num{font-family:var(--font-head);font-size:11px;color:var(--accent);letter-spacing:2px;margin-bottom:16px;}
+.project-title{font-family:var(--font-head);font-size:22px;font-weight:700;margin-bottom:12px;letter-spacing:-.5px;}
+.project-desc{color:var(--muted);font-size:14px;line-height:1.7;margin-bottom:24px;}
+.project-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:24px;}
+.project-tag{font-size:11px;padding:4px 10px;border-radius:6px;background:rgba(124,111,255,.12);color:var(--accent);font-family:var(--font-head);letter-spacing:.3px;}
+.project-footer{display:flex;justify-content:space-between;align-items:center;}
+.project-type{font-size:11px;color:var(--muted);font-family:var(--font-head);letter-spacing:.5px;}
+.project-arrow{width:36px;height:36px;border-radius:8px;border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;text-decoration:none;color:var(--muted);transition:all .2s;}
+.project-arrow:hover{background:var(--accent);border-color:var(--accent);color:#fff;}
+
+/* SKILLS */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;}
+.skill-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px;transition:border-color .2s,box-shadow .2s;}
+.skill-card:hover{border-color:var(--border2);box-shadow:var(--shadow);}
+.skill-icon{width:40px;height:40px;border-radius:10px;margin-bottom:14px;display:flex;align-items:center;justify-content:center;font-size:20px;}
+.skill-icon.purple{background:rgba(124,111,255,.15);}
+.skill-icon.teal{background:rgba(0,200,150,.12);}
+.skill-icon.amber{background:rgba(255,180,60,.12);}
+.skill-name{font-family:var(--font-head);font-weight:700;font-size:15px;margin-bottom:6px;}
+.skill-desc{font-size:12px;color:var(--muted);}
+
+/* CONTACT */
+.contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;}
+.contact-info{display:flex;flex-direction:column;gap:20px;}
+.contact-item{display:flex;align-items:center;gap:16px;padding:20px;background:var(--surface);border:1px solid var(--border);border-radius:12px;text-decoration:none;color:var(--text);transition:border-color .2s,box-shadow .2s;}
+.contact-item:hover{border-color:var(--accent);box-shadow:0 4px 20px rgba(124,111,255,.1);}
+.contact-icon{width:40px;height:40px;border-radius:10px;background:rgba(124,111,255,.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.contact-icon svg{width:18px;height:18px;fill:var(--accent);}
+.contact-label{font-size:11px;color:var(--muted);font-family:var(--font-head);letter-spacing:.5px;margin-bottom:2px;}
+.contact-value{font-size:14px;font-weight:500;}
+.contact-form{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:32px;box-shadow:var(--shadow);}
+.form-row{margin-bottom:18px;}
+.form-label{font-size:12px;color:var(--muted);font-family:var(--font-head);letter-spacing:.5px;display:block;margin-bottom:8px;}
+.form-input{width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:11px 14px;color:var(--text);font-family:var(--font-body);font-size:14px;outline:none;transition:border-color .2s;}
+.form-input:focus{border-color:var(--accent);}
+.form-textarea{resize:vertical;min-height:100px;}
+.form-submit{width:100%;background:var(--accent);color:#fff;border:none;padding:13px;border-radius:10px;font-family:var(--font-head);font-weight:600;font-size:14px;cursor:pointer;transition:opacity .2s;margin-top:8px;}
+.form-submit:hover{opacity:.85;}
+.form-submit:disabled{opacity:.6;cursor:not-allowed;}
+.form-status{margin-top:12px;padding:10px 14px;border-radius:8px;font-size:13px;display:none;}
+.form-status.success{background:rgba(0,200,150,.12);color:#00b880;border:1px solid rgba(0,200,150,.2);display:block;}
+.form-status.error{background:rgba(255,80,80,.1);color:#e05050;border:1px solid rgba(255,80,80,.2);display:block;}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:32px 5%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+.footer-brand{font-family:var(--font-head);font-weight:700;font-size:15px;}
+.footer-brand span{color:var(--accent);}
+.footer-copy{font-size:12px;color:var(--muted);}
+.footer-links{display:flex;gap:20px;}
+.footer-links a{font-size:12px;color:var(--muted);text-decoration:none;font-family:var(--font-head);}
+.footer-links a:hover{color:var(--text);}
+
+@media(max-width:768px){
+.about-grid,.contact-wrap{grid-template-columns:1fr;}
+.nav-links{display:none;}
+.hero h1{letter-spacing:-1px;}
+.about-avatar{max-width:200px;margin:0 auto;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#home">MR<span>.</span>dev</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li>
+      <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">
+        <span class="icon-sun">☀️</span>
+        <span class="icon-moon">🌙</span>
+      </button>
+    </li>
+  </ul>
+  <a class="nav-cta" href="#contact">Hire me</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="hero-badge-dot"></span>
+      Available for freelance &amp; collaboration
+    </div>
+    <h1>
+      MUGISHA<br>
+      <span class="line2">RUSHINGA</span><br>
+      Guevara
+    </h1>
+    <p class="hero-desc">Software developer focused on building practical, user-friendly applications. I enjoy solving real-world problems through code and creating efficient, scalable solutions that make a meaningful impact.</p>
+    <div class="hero-actions">
+      <a class="btn-primary" href="#projects">View my work</a>
+      <a class="btn-secondary" href="#contact">Get in touch</a>
+    </div>
+    <div class="hero-socials">
+      <span>FIND ME ON</span>
+      <a class="social-link" href="https://github.com/rushinga1" target="_blank" title="GitHub">
+        <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+      </a>
+      <a class="social-link" href="https://linkedin.com/in/mugisha-guevara" target="_blank" title="LinkedIn">
+        <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+      <a class="social-link" href="https://instagram.com/c.h_e0" target="_blank" title="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">WHO I AM</div>
+  <div class="about-grid">
+    <div class="about-avatar">
+      <img src="./profile.jpg" alt="MUGISHA RUSHINGA Guevara"/>
+    </div>
+    <div class="about-text">
+      <h2 class="section-title">About me</h2>
+      <p>I'm <strong>MUGISHA RUSHINGA Guevara</strong>, a software developer based in Kigali, Rwanda. I'm focused on building practical, user-friendly applications, with experience working on client-server systems and web deployment.</p>
+      <p>I enjoy solving real-world problems through code and continuously improving my skills in modern development tools and technologies. I'm especially interested in creating efficient, scalable solutions that make a meaningful impact.</p>
+      <div class="about-tags">
+        <span class="tag">Kigali, Rwanda</span>
+        <span class="tag">Web Development</span>
+        <span class="tag">UI/UX Design</span>
+        <span class="tag">Client-Server Systems</span>
+        <span class="tag">Open to work</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">MY WORK</div>
+  <h2 class="section-title">Featured projects</h2>
+  <p class="section-sub">A selection of projects I've built — from group collaborations to design prototypes.</p>
+  <div class="projects-grid">
+    <div class="project-card">
+      <div class="project-num">01 — GROUP PROJECT</div>
+      <h3 class="project-title">OnTheGo</h3>
+      <p class="project-desc">An online ticket booking and easy transport platform developed as part of Docks Corporation. Allows users to book transport tickets seamlessly through a clean, accessible interface.</p>
+      <div class="project-tags">
+        <span class="project-tag">Web App</span>
+        <span class="project-tag">Booking System</span>
+        <span class="project-tag">Transport</span>
+      </div>
+      <div class="project-footer">
+        <span class="project-type">DOCKS CORPORATION</span>
+        <a class="project-arrow" href="#" title="View project">→</a>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-num">02 — PROTOTYPE</div>
+      <h3 class="project-title">Incognito</h3>
+      <p class="project-desc">A Figma prototype inspired by Instagram's social feed experience. Designed with a focus on clean UI patterns, user flow, and a modern aesthetic for social content sharing.</p>
+      <div class="project-tags">
+        <span class="project-tag">Figma</span>
+        <span class="project-tag">UI Design</span>
+        <span class="project-tag">Prototype</span>
+      </div>
+      <div class="project-footer">
+        <span class="project-type">DESIGN PROTOTYPE</span>
+        <a class="project-arrow" href="#" title="View project">→</a>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-num">03 — GROUP PROJECT</div>
+      <h3 class="project-title">Agruni</h3>
+      <p class="project-desc">A company-commissioned project developed collaboratively to address business needs. Built with scalability and real-world deployment in mind, delivering a tailored solution for the client.</p>
+      <div class="project-tags">
+        <span class="project-tag">Client Project</span>
+        <span class="project-tag">Web App</span>
+        <span class="project-tag">Team</span>
+      </div>
+      <div class="project-footer">
+        <span class="project-type">COMPANY PROJECT</span>
+        <a class="project-arrow" href="#" title="View project">→</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">WHAT I USE</div>
+  <h2 class="section-title">Skills &amp; tools</h2>
+  <p class="section-sub">Technologies and tools I work with to bring ideas to life.</p>
+  <div class="skills-grid">
+    <div class="skill-card"><div class="skill-icon purple">💻</div><div class="skill-name">Frontend</div><div class="skill-desc">HTML, CSS, JavaScript, React</div></div>
+    <div class="skill-card"><div class="skill-icon teal">⚙️</div><div class="skill-name">Backend</div><div class="skill-desc">Node.js, REST APIs, Client-Server</div></div>
+    <div class="skill-card"><div class="skill-icon purple">🎨</div><div class="skill-name">Design</div><div class="skill-desc">Figma, UI/UX, Prototyping</div></div>
+    <div class="skill-card"><div class="skill-icon teal">🚀</div><div class="skill-name">Deployment</div><div class="skill-desc">Web Deployment, Vercel, Git</div></div>
+    <div class="skill-card"><div class="skill-icon amber">🛠️</div><div class="skill-name">Tools</div><div class="skill-desc">GitHub, VS Code, Postman</div></div>
+    <div class="skill-card"><div class="skill-icon amber">📱</div><div class="skill-name">Other</div><div class="skill-desc">Responsive Design, Agile</div></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">LET'S TALK</div>
+  <h2 class="section-title">Get in touch</h2>
+  <p class="section-sub">Have a project in mind or want to collaborate? Feel free to reach out.</p>
+  <div class="contact-wrap">
+    <div class="contact-info">
+      <a class="contact-item" href="mailto:mugishaguevara12@gmail.com">
+        <div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div>
+        <div><div class="contact-label">EMAIL (PRIMARY)</div><div class="contact-value">mugishaguevara12@gmail.com</div></div>
+      </a>
+      <a class="contact-item" href="mailto:rushingaguevara12@gmail.com">
+        <div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div>
+        <div><div class="contact-label">EMAIL (SECONDARY)</div><div class="contact-value">rushingaguevara12@gmail.com</div></div>
+      </a>
+      <a class="contact-item" href="tel:+250791895352">
+        <div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></div>
+        <div><div class="contact-label">PHONE</div><div class="contact-value">0791 895 352 / 0732 795 406</div></div>
+      </a>
+      <a class="contact-item" href="https://github.com/rushinga1" target="_blank">
+        <div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg></div>
+        <div><div class="contact-label">GITHUB</div><div class="contact-value">github.com/rushinga1</div></div>
+      </a>
+    </div>
+    <div class="contact-form">
+      <div class="form-row">
+        <label class="form-label">YOUR NAME</label>
+        <input class="form-input" id="fname" type="text" placeholder="John Doe"/>
+      </div>
+      <div class="form-row">
+        <label class="form-label">EMAIL ADDRESS</label>
+        <input class="form-input" id="femail" type="email" placeholder="john@example.com"/>
+      </div>
+      <div class="form-row">
+        <label class="form-label">MESSAGE</label>
+        <textarea class="form-input form-textarea" id="fmessage" placeholder="Tell me about your project..."></textarea>
+      </div>
+      <button class="form-submit" id="fsubmit" onclick="sendMessage()">Send message →</button>
+      <div class="form-status" id="fstatus"></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">MR<span>.</span>dev</div>
+  <div class="footer-copy">© 2025 MUGISHA RUSHINGA Guevara. All rights reserved.</div>
+  <div class="footer-links">
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </div>
+</footer>
+
+<script>
+// Theme toggle — default is light (as set on <html>)
+function toggleTheme() {
+  const html = document.documentElement;
+  const current = html.getAttribute('data-theme');
+  html.setAttribute('data-theme', current === 'light' ? 'dark' : 'light');
+  localStorage.setItem('theme', html.getAttribute('data-theme'));
+}
+// Restore saved theme
+(function() {
+  const saved = localStorage.getItem('theme');
+  if (saved) document.documentElement.setAttribute('data-theme', saved);
+})();
+
+// Contact form with Node.js backend
+async function sendMessage() {
+  const name = document.getElementById('fname').value.trim();
+  const email = document.getElementById('femail').value.trim();
+  const message = document.getElementById('fmessage').value.trim();
+  const btn = document.getElementById('fsubmit');
+  const status = document.getElementById('fstatus');
+
+  status.className = 'form-status';
+  status.textContent = '';
+
+  if (!name || !email || !message) {
+    status.className = 'form-status error';
+    status.textContent = '⚠️ Please fill in all fields before sending.';
+    return;
+  }
+  if (!/^[^@]+@[^@]+\.[^@]+$/.test(email)) {
+    status.className = 'form-status error';
+    status.textContent = '⚠️ Please enter a valid email address.';
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+
+  try {
+    const response = await fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, email, message })
+    });
+
+    const data = await response.json();
+
+    if (response.ok && data.success) {
+      status.className = 'form-status success';
+      status.textContent = '✅ ' + (data.message || 'Message sent successfully! Guevara will get back to you soon.');
+      document.getElementById('fname').value = '';
+      document.getElementById('femail').value = '';
+      document.getElementById('fmessage').value = '';
+    } else {
+      status.className = 'form-status error';
+      status.textContent = '⚠️ ' + (data.error || 'Failed to send message. Please try again later.');
+    }
+  } catch (err) {
+    status.className = 'form-status error';
+    status.textContent = '⚠️ An error occurred while sending the message. Please try again.';
+    console.error('Submission error:', err);
+  }
+
+  btn.disabled = false;
+  btn.textContent = 'Send message →';
+}
+</script>
+
+</body>
+</html>
