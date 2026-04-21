@@ -155,7 +155,7 @@ footer{border-top:1px solid var(--border);padding:32px 5%;display:flex;justify-c
 .about-avatar{max-width:200px;margin:0 auto;}
 }
 /* BACKGROUND ANIMATED LINES */
-.bg-lines {
+.bg-lines, .bg-lines-h {
   position: fixed;
   top: 0;
   left: 0;
@@ -163,36 +163,71 @@ footer{border-top:1px solid var(--border);padding:32px 5%;display:flex;justify-c
   height: 100vh;
   z-index: -1;
   display: flex;
-  justify-content: space-around;
   pointer-events: none;
 }
-.bg-lines .line {
-  width: 1px;
-  height: 100vh;
+.bg-lines { justify-content: space-around; }
+.bg-lines-h { flex-direction: column; justify-content: space-around; }
+
+.bg-lines .line, .bg-lines-h .line-h {
   background: var(--border);
   position: relative;
   overflow: hidden;
 }
-.bg-lines .line::after {
+.bg-lines .line { width: 1px; height: 100vh; }
+.bg-lines-h .line-h { height: 1px; width: 100vw; }
+
+.bg-lines .line::after, .bg-lines-h .line-h::after {
   content: '';
   display: block;
   position: absolute;
-  height: 15vh;
+  background: var(--accent);
+  box-shadow: 0 0 10px var(--accent);
+}
+
+/* Vertical streaks */
+.bg-lines .line::after {
+  height: 25vh;
   width: 100%;
   top: -50%;
   left: 0;
   background: linear-gradient(to bottom, transparent 0%, var(--accent) 75%, var(--accent) 100%);
-  animation: drop 7s 0s infinite;
-  animation-fill-mode: forwards;
-  animation-timing-function: cubic-bezier(0.4, 0.26, 0, 0.97);
+  animation: drop 3s infinite;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
-.bg-lines .line:nth-child(1)::after { animation-delay: 2s; }
-.bg-lines .line:nth-child(3)::after { animation-delay: 4s; }
-.bg-lines .line:nth-child(4)::after { animation-delay: 5s; }
-.bg-lines .line:nth-child(5)::after { animation-delay: 1s; }
+
+/* Horizontal streaks */
+.bg-lines-h .line-h::after {
+  width: 25vw;
+  height: 100%;
+  left: -50%;
+  top: 0;
+  background: linear-gradient(to right, transparent 0%, var(--accent) 75%, var(--accent) 100%);
+  animation: slide-right 4s infinite;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.bg-lines .line:nth-child(1)::after { animation-delay: 0.5s; }
+.bg-lines .line:nth-child(2)::after { animation-delay: 1.5s; }
+.bg-lines .line:nth-child(3)::after { animation-delay: 2.2s; }
+.bg-lines .line:nth-child(4)::after { animation-delay: 0.8s; }
+.bg-lines .line:nth-child(5)::after { animation-delay: 1.2s; }
+
+.bg-lines-h .line-h:nth-child(1)::after { animation-delay: 1s; }
+.bg-lines-h .line-h:nth-child(2)::after { animation-delay: 2.5s; }
+.bg-lines-h .line-h:nth-child(3)::after { animation-delay: 0.2s; }
+.bg-lines-h .line-h:nth-child(4)::after { animation-delay: 3.2s; }
+.bg-lines-h .line-h:nth-child(5)::after { animation-delay: 1.8s; }
+
 @keyframes drop {
-  0% { top: -50%; }
-  100% { top: 110%; }
+  0% { top: -50%; opacity: 0; }
+  30% { opacity: 1; }
+  100% { top: 110%; opacity: 0; }
+}
+
+@keyframes slide-right {
+  0% { left: -50%; opacity: 0; }
+  30% { opacity: 1; }
+  100% { left: 110%; opacity: 0; }
 }
 </style>
 </head>
@@ -205,6 +240,13 @@ footer{border-top:1px solid var(--border);padding:32px 5%;display:flex;justify-c
   <div class="line"></div>
   <div class="line"></div>
   <div class="line"></div>
+</div>
+<div class="bg-lines-h">
+  <div class="line-h"></div>
+  <div class="line-h"></div>
+  <div class="line-h"></div>
+  <div class="line-h"></div>
+  <div class="line-h"></div>
 </div>
 
 <nav>
