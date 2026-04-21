@@ -154,9 +154,58 @@ footer{border-top:1px solid var(--border);padding:32px 5%;display:flex;justify-c
 .hero h1{letter-spacing:-1px;}
 .about-avatar{max-width:200px;margin:0 auto;}
 }
+/* BACKGROUND ANIMATED LINES */
+.bg-lines {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  display: flex;
+  justify-content: space-around;
+  pointer-events: none;
+}
+.bg-lines .line {
+  width: 1px;
+  height: 100vh;
+  background: var(--border);
+  position: relative;
+  overflow: hidden;
+}
+.bg-lines .line::after {
+  content: '';
+  display: block;
+  position: absolute;
+  height: 15vh;
+  width: 100%;
+  top: -50%;
+  left: 0;
+  background: linear-gradient(to bottom, transparent 0%, var(--accent) 75%, var(--accent) 100%);
+  animation: drop 7s 0s infinite;
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(0.4, 0.26, 0, 0.97);
+}
+.bg-lines .line:nth-child(1)::after { animation-delay: 2s; }
+.bg-lines .line:nth-child(3)::after { animation-delay: 4s; }
+.bg-lines .line:nth-child(4)::after { animation-delay: 5s; }
+.bg-lines .line:nth-child(5)::after { animation-delay: 1s; }
+@keyframes drop {
+  0% { top: -50%; }
+  100% { top: 110%; }
+}
 </style>
 </head>
 <body>
+
+<!-- BACKGROUND LINES -->
+<div class="bg-lines">
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+</div>
 
 <nav>
   <a class="nav-logo" href="#home">MR<span>.</span>dev</a>
