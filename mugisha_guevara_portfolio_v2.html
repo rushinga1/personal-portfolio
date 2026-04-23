@@ -96,6 +96,9 @@ section{padding:80px 5%;}
 .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;}
 .project-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:32px;transition:border-color .25s,transform .25s,box-shadow .25s;}
 .project-card:hover{border-color:var(--accent);transform:translateY(-4px);box-shadow:0 12px 40px rgba(124,111,255,.12);}
+.project-link-hover{font-size:11px;color:var(--accent);font-family:var(--font-head);letter-spacing:.5px;opacity:0;transition:opacity .3s;margin-top:12px;display:inline-block;font-weight:600;text-decoration:none;}
+.project-link-hover:hover{text-decoration:underline;}
+.project-card:hover .project-link-hover{opacity:1;}
 .project-num{font-family:var(--font-head);font-size:11px;color:var(--accent);letter-spacing:2px;margin-bottom:16px;}
 .project-title{font-family:var(--font-head);font-size:22px;font-weight:700;margin-bottom:12px;letter-spacing:-.5px;}
 .project-desc{color:var(--muted);font-size:14px;line-height:1.7;margin-bottom:24px;}
@@ -348,6 +351,7 @@ footer{border-top:1px solid var(--border);padding:32px 5%;display:flex;justify-c
         <span class="project-type">DOCKS CORPORATION</span>
         <a class="project-arrow" href="#" title="View project">→</a>
       </div>
+      <span class="project-link-hover">Coming Soon</span>
     </div>
     <div class="project-card">
       <div class="project-num">02 — PROTOTYPE</div>
@@ -362,6 +366,7 @@ footer{border-top:1px solid var(--border);padding:32px 5%;display:flex;justify-c
         <span class="project-type">DESIGN PROTOTYPE</span>
         <a class="project-arrow" href="#" title="View project">→</a>
       </div>
+      <span class="project-link-hover">Coming Soon</span>
     </div>
     <div class="project-card">
       <div class="project-num">03 — GROUP PROJECT</div>
@@ -376,6 +381,37 @@ footer{border-top:1px solid var(--border);padding:32px 5%;display:flex;justify-c
         <span class="project-type">COMPANY PROJECT</span>
         <a class="project-arrow" href="#" title="View project">→</a>
       </div>
+      <span class="project-link-hover">Coming Soon</span>
+    </div>
+    <div class="project-card">
+      <div class="project-num">04 — WEATHER APP</div>
+      <h3 class="project-title">SkyCast</h3>
+      <p class="project-desc">A precise weather application where users input a location to get detailed real-time data including temperature, humidity, wind speed, and pressure.</p>
+      <div class="project-tags">
+        <span class="project-tag">Weather API</span>
+        <span class="project-tag">Real-time Data</span>
+        <span class="project-tag">Frontend</span>
+      </div>
+      <div class="project-footer">
+        <span class="project-type">PERSONAL PROJECT</span>
+        <a class="project-arrow" href="https://day1-internship-47k7.vercel.app" target="_blank" title="View project">→</a>
+      </div>
+      <a class="project-link-hover" href="https://day1-internship-47k7.vercel.app" target="_blank">https://day1-internship-47k7.vercel.app</a>
+    </div>
+    <div class="project-card">
+      <div class="project-num">05 — GAME DEVELOPMENT</div>
+      <h3 class="project-title">MRDEVGAME</h3>
+      <p class="project-desc">A cool platformer game featuring many levels and challenging gameplay mechanics designed to provide an engaging experience.</p>
+      <div class="project-tags">
+        <span class="project-tag">Game Design</span>
+        <span class="project-tag">Platformer</span>
+        <span class="project-tag">Vercel</span>
+      </div>
+      <div class="project-footer">
+        <span class="project-type">LIVE GAME</span>
+        <a class="project-arrow" href="https://mrdevgame.vercel.app" target="_blank" title="View game">→</a>
+      </div>
+      <a class="project-link-hover" href="https://mrdevgame.vercel.app" target="_blank">https://mrdevgame.vercel.app</a>
     </div>
   </div>
 </section>
